@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
-const mongoose= require("mongoose");
-const dotenv = require("dotenv");
+const mongoose= require("mongoose"); // librería que nos permite hacer consultas a nuestra BBDD mongoDB
+const dotenv = require("dotenv"); // gestión de variables de entorno
 const userRoute = require("./routes/user");
 const authRoute = require("./routes/auth");
 const productRoute = require("./routes/product");
@@ -12,8 +12,7 @@ dotenv.config();
 
 mongoose.connect(process.env.MONGO_URL)
         .then( ()=> console.log("DBconnection successfull"))
-        .catch( (error) => console.log(error)
-);
+        .catch( (error) => console.log(error));
 
 app.use(express.json());
 app.use("/api/users", userRoute);
